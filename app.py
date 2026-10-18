@@ -5,7 +5,6 @@ from datetime import date
 
 st.set_page_config(
     page_title="Class Monitor",
-    page_icon="C",
     layout="wide",
     initial_sidebar_state="expanded",
 )
@@ -25,7 +24,7 @@ for key, value in DEFAULTS.items():
         st.session_state[key] = value.copy()
 
 # -----------------------------
-# Pink and black design
+# Pink and black styling
 # -----------------------------
 st.markdown("""
 <style>
@@ -47,14 +46,11 @@ html, body, [class*="css"] {
     color: var(--black);
 }
 
-.stApp {
-    background: var(--page);
-}
+.stApp { background: var(--page); }
 
 h1, h2, h3, h4 {
     font-family: 'Manrope', sans-serif !important;
     color: var(--black) !important;
-    letter-spacing: -0.03em;
 }
 
 .block-container {
@@ -63,14 +59,9 @@ h1, h2, h3, h4 {
     padding-bottom: 3rem;
 }
 
-/* Sidebar */
 [data-testid="stSidebar"] {
     background: var(--white);
     border-right: 1px solid var(--line);
-}
-
-[data-testid="stSidebar"] > div:first-child {
-    padding-top: 1.2rem;
 }
 
 .brand-wrap {
@@ -87,30 +78,27 @@ h1, h2, h3, h4 {
     height: 44px;
     border-radius: 13px;
     background: var(--pink);
-    color: #FFFFFF !important;
+    color: white;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-family: 'Manrope', sans-serif;
     font-size: 22px;
     font-weight: 800;
-    flex-shrink: 0;
 }
 
 .brand-title {
-    color: var(--black) !important;
     font-family: 'Manrope', sans-serif;
     font-size: 16px;
     font-weight: 800;
 }
 
 .brand-subtitle {
-    color: var(--muted) !important;
+    color: var(--muted);
     font-size: 11px;
     margin-top: 3px;
 }
 
-/* Make navigation labels readable */
+/* Visible sidebar navigation */
 [data-testid="stSidebar"] [data-testid="stRadio"] {
     width: 100%;
 }
@@ -130,28 +118,19 @@ h1, h2, h3, h4 {
     margin: 0 !important;
     border: 1px solid transparent !important;
     border-radius: 10px !important;
-    background: transparent !important;
     color: var(--black) !important;
     opacity: 1 !important;
-    visibility: visible !important;
-    cursor: pointer;
 }
 
 [data-testid="stSidebar"] [data-testid="stRadio"] div[role="radiogroup"] > label p,
-[data-testid="stSidebar"] [data-testid="stRadio"] div[role="radiogroup"] > label span,
-[data-testid="stSidebar"] [data-testid="stRadio"] div[role="radiogroup"] > label div {
+[data-testid="stSidebar"] [data-testid="stRadio"] div[role="radiogroup"] > label span {
     color: var(--black) !important;
     opacity: 1 !important;
-    visibility: visible !important;
     font-size: 14px !important;
     font-weight: 600 !important;
 }
 
-[data-testid="stSidebar"] [data-testid="stRadio"] div[role="radiogroup"] > label:hover {
-    background: var(--pink-light) !important;
-    border-color: var(--pink-border) !important;
-}
-
+[data-testid="stSidebar"] [data-testid="stRadio"] div[role="radiogroup"] > label:hover,
 [data-testid="stSidebar"] [data-testid="stRadio"] div[role="radiogroup"] > label:has(input:checked) {
     background: var(--pink-light) !important;
     border-color: var(--pink-border) !important;
@@ -161,23 +140,12 @@ h1, h2, h3, h4 {
     accent-color: var(--pink) !important;
 }
 
-[data-testid="stSidebar"] [data-testid="stWidgetLabel"],
-[data-testid="stSidebar"] [data-testid="stWidgetLabel"] p {
-    color: var(--black) !important;
-    opacity: 1 !important;
-}
-
-[data-testid="stSidebar"] [data-testid="stMarkdownContainer"] p {
-    color: var(--muted);
-}
-
-/* Page headings */
 .eyebrow {
     color: var(--pink);
     font-size: 11px;
     text-transform: uppercase;
     font-weight: 800;
-    letter-spacing: 0.14em;
+    letter-spacing: .14em;
     margin-bottom: 7px;
 }
 
@@ -186,8 +154,7 @@ h1, h2, h3, h4 {
     font-size: clamp(28px, 3vw, 37px);
     font-weight: 800;
     line-height: 1.15;
-    letter-spacing: -0.04em;
-    color: var(--black);
+    letter-spacing: -.04em;
     margin-bottom: 7px;
 }
 
@@ -197,29 +164,25 @@ h1, h2, h3, h4 {
     margin-bottom: 25px;
 }
 
-/* Dashboard metric cards */
 .metric-card {
     background: var(--white);
     border: 1px solid var(--line);
     border-radius: 16px;
     padding: 20px;
     min-height: 120px;
-    box-shadow: 0 3px 12px rgba(21, 18, 24, 0.025);
+    box-shadow: 0 3px 12px rgba(21, 18, 24, .025);
 }
 
 .metric-label {
     color: var(--muted);
     font-size: 11px;
     font-weight: 700;
-    letter-spacing: 0.04em;
     margin-bottom: 12px;
 }
 
 .metric-value {
     font-family: 'Manrope', sans-serif;
-    color: var(--black);
     font-size: 30px;
-    line-height: 1.1;
     font-weight: 800;
 }
 
@@ -232,7 +195,6 @@ h1, h2, h3, h4 {
 .section-heading {
     font-family: 'Manrope', sans-serif;
     font-weight: 800;
-    color: var(--black);
     font-size: 18px;
     margin: 25px 0 12px;
 }
@@ -246,7 +208,6 @@ h1, h2, h3, h4 {
     text-align: center;
 }
 
-/* Buttons */
 div.stButton > button,
 div.stDownloadButton > button,
 div[data-testid="stFormSubmitButton"] > button {
@@ -260,52 +221,27 @@ div.stButton > button[kind="primary"],
 div[data-testid="stFormSubmitButton"] > button[kind="primary"] {
     background: var(--pink) !important;
     border-color: var(--pink) !important;
-    color: #FFFFFF !important;
-}
-
-div.stButton > button[kind="primary"]:hover,
-div[data-testid="stFormSubmitButton"] > button[kind="primary"]:hover {
-    background: #E83D85 !important;
-    border-color: #E83D85 !important;
+    color: white !important;
 }
 
 div.stDownloadButton > button {
     background: var(--black);
-    color: var(--white);
+    color: white;
     border-color: var(--black);
 }
 
-div[data-testid="stTextInput"] input,
-div[data-testid="stNumberInput"] input,
-div[data-testid="stDateInput"] input,
-div[data-testid="stSelectbox"] div[data-baseweb="select"],
-div[data-testid="stTextArea"] textarea {
-    border-radius: 9px;
-}
-
-div[data-testid="stDataFrame"] {
-    border: 1px solid var(--line);
-    border-radius: 12px;
-}
-
-hr {
-    border-color: var(--line);
-}
+hr { border-color: var(--line); }
 
 @media (max-width: 768px) {
-    .block-container {
-        padding-top: 1.2rem;
-    }
-    .metric-card {
-        padding: 15px;
-    }
+    .block-container { padding-top: 1.2rem; }
+    .metric-card { padding: 15px; }
 }
 </style>
 """, unsafe_allow_html=True)
 
 
 # -----------------------------
-# Helpers
+# Helper functions
 # -----------------------------
 def page_header(title, description):
     st.markdown(
@@ -340,7 +276,7 @@ def show_empty(message):
 
 
 # -----------------------------
-# Sidebar navigation
+# Sidebar
 # -----------------------------
 with st.sidebar:
     st.markdown("""
@@ -354,8 +290,9 @@ with st.sidebar:
     """, unsafe_allow_html=True)
 
     st.markdown(
-        '<div style="font-size:11px;font-weight:800;letter-spacing:.12em;'
-        'color:#77717D;margin:8px 0 10px 8px;">WORKSPACE</div>',
+        '<div style="font-size:11px;font-weight:800;'
+        'letter-spacing:.12em;color:#77717D;margin:8px 0 10px 8px;">'
+        'WORKSPACE</div>',
         unsafe_allow_html=True,
     )
 
@@ -375,7 +312,8 @@ with st.sidebar:
 
     st.markdown("---")
     st.caption(
-        "Data is stored in the active session and may reset when the app restarts."
+        "Data is stored in the active session and may reset "
+        "when the app restarts."
     )
 
 
@@ -389,22 +327,31 @@ if page == "Dashboard":
     )
 
     total_students = len(st.session_state.students)
+
     today_records = [
         row for row in st.session_state.attendance
         if row["Date"] == str(date.today())
     ]
+
     present_today = sum(
         row["Status"] == "Present" for row in today_records
     )
+
+    late_today = sum(
+        row["Status"] == "Late" for row in today_records
+    )
+
     attendance_rate = (
         round(present_today / len(today_records) * 100)
         if today_records else 0
     )
 
-    columns = st.columns(4)
+    columns = st.columns(5)
+
     metrics = [
         ("TOTAL STUDENTS", total_students, "Students on your class list"),
         ("PRESENT TODAY", present_today, "Present records for today"),
+        ("LATE TODAY", late_today, "Late records for today"),
         ("ATTENDANCE RATE", f"{attendance_rate}%", "Based on today's records"),
         ("ASSIGNMENTS", len(st.session_state.assignments), "Homework and classwork"),
     ]
@@ -417,6 +364,7 @@ if page == "Dashboard":
         '<div class="section-heading">Recent attendance</div>',
         unsafe_allow_html=True,
     )
+
     if st.session_state.attendance:
         df = pd.DataFrame(st.session_state.attendance)
         st.dataframe(
@@ -431,6 +379,7 @@ if page == "Dashboard":
         '<div class="section-heading">Recent assignments</div>',
         unsafe_allow_html=True,
     )
+
     if st.session_state.assignments:
         df = pd.DataFrame(st.session_state.assignments)
         st.dataframe(
@@ -460,6 +409,7 @@ elif page == "Students":
 
     if submitted:
         name = name.strip()
+
         if not name:
             st.error("Enter a student name first.")
         elif any(
@@ -479,7 +429,10 @@ elif page == "Students":
 
     if st.session_state.students:
         st.dataframe(
-            pd.DataFrame(st.session_state.students, columns=["Student"]),
+            pd.DataFrame(
+                st.session_state.students,
+                columns=["Student"],
+            ),
             use_container_width=True,
             hide_index=True,
         )
@@ -491,14 +444,17 @@ elif page == "Students":
 
         if st.button("Remove selected student"):
             st.session_state.students.remove(selected)
+
             st.session_state.attendance = [
                 row for row in st.session_state.attendance
                 if row["Student"] != selected
             ]
+
             st.session_state.marks = [
                 row for row in st.session_state.marks
                 if row["Student"] != selected
             ]
+
             st.success(f"{selected} was removed.")
             st.rerun()
     else:
@@ -522,12 +478,16 @@ elif page == "Attendance":
                 "Attendance date",
                 value=date.today(),
             )
-            student = st.selectbox("Student", st.session_state.students)
+            student = st.selectbox(
+                "Student",
+                st.session_state.students,
+            )
             status = st.selectbox(
                 "Status",
                 ["Present", "Absent", "Late", "Excused"],
             )
             notes = st.text_input("Notes (optional)")
+
             submitted = st.form_submit_button(
                 "Save attendance",
                 type="primary",
@@ -608,6 +568,7 @@ elif page == "Assignments & Homework":
         )
         due_date = st.date_input("Due date", value=date.today())
         details = st.text_area("Instructions or notes (optional)")
+
         submitted = st.form_submit_button(
             "Add assignment",
             type="primary",
@@ -667,7 +628,10 @@ elif page == "Student Marks":
         st.info("Add students first, then record their marks.")
     else:
         with st.form("marks_form", clear_on_submit=True):
-            student = st.selectbox("Student", st.session_state.students)
+            student = st.selectbox(
+                "Student",
+                st.session_state.students,
+            )
             assessment = st.text_input(
                 "Assessment name",
                 placeholder="For example, Mathematics test",
@@ -688,6 +652,7 @@ elif page == "Student Marks":
                 "Assessment date",
                 value=date.today(),
             )
+
             submitted = st.form_submit_button(
                 "Save marks",
                 type="primary",
@@ -700,6 +665,7 @@ elif page == "Student Marks":
                 st.error("The score cannot exceed the maximum score.")
             else:
                 percentage = round(score / maximum * 100, 2)
+
                 st.session_state.marks.append({
                     "Student": student,
                     "Assessment": assessment.strip(),
@@ -708,6 +674,7 @@ elif page == "Student Marks":
                     "Percentage": percentage,
                     "Date": str(assessment_date),
                 })
+
                 st.success("Marks saved.")
                 st.rerun()
 
@@ -760,7 +727,10 @@ elif page == "Export Data":
     exports = [
         (
             "Students",
-            pd.DataFrame(st.session_state.students, columns=["Student"]),
+            pd.DataFrame(
+                st.session_state.students,
+                columns=["Student"],
+            ),
             "students.csv",
         ),
         (
@@ -794,6 +764,7 @@ elif page == "Export Data":
                 use_container_width=True,
                 hide_index=True,
             )
+
             st.download_button(
                 label=f"Download {filename}",
                 data=df.to_csv(index=False).encode("utf-8"),
@@ -804,5 +775,6 @@ elif page == "Export Data":
 
     st.info(
         "This version stores data in the active Streamlit session only. "
-        "Download your CSV files before the session ends if you need a permanent copy."
+        "Download your CSV files before the session ends if you need "
+        "a permanent copy."
     )
